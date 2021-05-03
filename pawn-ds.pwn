@@ -1,5 +1,8 @@
-#include <a_samp>
+#if defined _PAWN_DS
+    #endinput
+#endinput
 
+#define _PAWN_DS
 
 // Stack 
 
@@ -80,7 +83,7 @@ INTERNAL FUNCS
 ////////////////////////////////////////////////////////////
 */
 
-Stack_InternalAdd(stack[], obj, & index, & len, size) {
+stock Stack_InternalAdd(stack[], obj, & index, & len, size) {
     if (index >= size) {
         index = size - 1; // forcing it at the end of the array
         len--;
@@ -90,7 +93,7 @@ Stack_InternalAdd(stack[], obj, & index, & len, size) {
     len++;
 }
 
-Stack_InternalRemove(stack[], & index, & len, size) {
+stock Stack_InternalRemove(stack[], & index, & len, size) {
     if (len <= 0) return print("Nothing to remove");
     --index;
     new tmp = stack[index];
@@ -99,18 +102,18 @@ Stack_InternalRemove(stack[], & index, & len, size) {
     return tmp;
 }
 
-Stack_InternalPeek(const stack[], index, len, size) {
+stock Stack_InternalPeek(const stack[], index, len, size) {
     if (len <= 0) { print("Nothing to peek"); } else return stack[--index];
 }
 
-Stack_InternalSearch(const stack[], obj, index, len, size) {
+stock Stack_InternalSearch(const stack[], obj, index, len, size) {
     for(new i = 0; i < len; ++i) {
         if(stack[i] == obj) return 1;
     }
     return 0;
 }
 
-Stack_InternalGetString(const stack[], index, len, size) {
+stock Stack_InternalGetString(const stack[], index, len, size) {
     new str[1000];
     new tmpstr[10];
     strcat(str, "[ ")
@@ -125,7 +128,7 @@ Stack_InternalGetString(const stack[], index, len, size) {
 ////////////////////////////////////////////////////////////////////
 // Queue Internal Funcs
 
-Queue_InternalAdd(queue[], obj, &index, &len, size) {
+stock Queue_InternalAdd(queue[], obj, &index, &len, size) {
     if(index >= size) {
         index = size -1;
         len--;
@@ -135,7 +138,7 @@ Queue_InternalAdd(queue[], obj, &index, &len, size) {
     len++;
 }
 
-Queue_InternalRemove(queue[], &index, &len, size) {
+stock Queue_InternalRemove(queue[], &index, &len, size) {
     if(len <= 0) return print("Nothing to remove.");
     new tmp = queue[0];
     for(new i = 1; i < len; i++) {
@@ -146,19 +149,19 @@ Queue_InternalRemove(queue[], &index, &len, size) {
     return tmp;
 }
 
-Queue_InternalShow(queue[], index, len, size) {
+stock Queue_InternalShow(queue[], index, len, size) {
     if(len <= 0) print("Nothing to show.");
     else return queue[0];
 }
 
-Queue_InternalSearch(const queue[], obj, index, len, size) {
+stock Queue_InternalSearch(const queue[], obj, index, len, size) {
     for(new i = 0; i < len; ++i) {
         if(queue[i] == obj) return 1;
     }
     return 0;
 }
 
-Queue_InternalGetString(const queue[], index, len, size) {
+stock Queue_InternalGetString(const queue[], index, len, size) {
     new str[1000];
     new tmpstr[10];
     strcat(str, "[ ")
@@ -174,7 +177,7 @@ Queue_InternalGetString(const queue[], index, len, size) {
 
 // Collection internal funcs
 
-Collection_InternalAdd(collection[], obj, &index, &len, size) {
+stock Collection_InternalAdd(collection[], obj, &index, &len, size) {
     if(len >= size) {
         index = size-1;
         len--;
@@ -184,7 +187,7 @@ Collection_InternalAdd(collection[], obj, &index, &len, size) {
     len++;
 }
 
-Collection_InternalRemove(collection[], obj, &index, &len, size) {
+stock Collection_InternalRemove(collection[], obj, &index, &len, size) {
     for(new i = 0; i < len; ++i) {
         if(collection[i] == obj) {
             for(new j = i+1; j < len; j++) {
@@ -198,14 +201,14 @@ Collection_InternalRemove(collection[], obj, &index, &len, size) {
     return 0;
 }
 
-Collection_InternalSearch(const collection[], obj, index, len, size) {
+stock Collection_InternalSearch(const collection[], obj, index, len, size) {
     for(new i = 0; i < len; ++i) {
         if(collection[i] == obj) return 1;
     }
     return 0;
 }
 
-Collection_InternalGetString(const collection[], index, len, size) {
+stock Collection_InternalGetString(const collection[], index, len, size) {
     new str[1000];
     new tmpstr[10];
     strcat(str, "[ ");
