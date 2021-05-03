@@ -62,17 +62,6 @@
 
 ////////////////////////////////////////////////////////////////////
 
-main() {
-    new COLLECTION:coll<10>;
-    Collection_Add(coll, 1);
-    Collection_Add(coll, 100);
-    printf("has: %i", Collection_Remove(coll, 100));
-    printf("has : %i", Collection_Contains(coll, 100));
-    printf("%i", Collection_Size(coll));
-    printf("%s", Collection_ToString(coll));
-    Collection_Add(coll, 1000);
-    printf("%s", Collection_ToString(coll));
-}
 
 
 /*
