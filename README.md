@@ -43,3 +43,23 @@ This function pops (deletes and returns) the last added element into the stack. 
 printf("The last element added in the list, which is now deleted is: %i", Stack_Pop(stack));
 ```
 
+### Stack_Peek(stack)
+This function peeks (returns) the last added element into the stack. Returns nothing if there isnt any element added in the stack.
+```pawn
+// Stack_Peek(nameOfStack);
+printf("The last player joined is: %i", Stack_Peek(playersJoined));
+```
+
+### Stack_Contains(stack, element)
+This function takes stack and element as parameters and returns true if the element exists otherwise false.
+```pawn
+// Stack_Contains(nameOfStack, element);
+printf("The player with id %i is joined: %i", playerid, Stack_Contains(playersJoined, playerid));
+```
+
+### Stack_ToString(stack)
+This function converts the stack's data into a string and returns it.
+```pawn
+// Stack_ToString(nameOfStack);
+printf("The stack looks like: %s", Stack_ToString(nameOfStack));
+```
